@@ -31,6 +31,14 @@ const dynamicRouter = [
     }
   },
   {
+    name: 'gateway',
+    path: '/gateway',
+    component: resolve => require(['@/components/gateway/gateway_manage.vue'], resolve),
+    meta: {
+      title: '通道标签'
+    }
+  },
+  {
     name: 'product',
     path: '/product',
     component: resolve => require(['@/components/product/product_page.vue'], resolve),

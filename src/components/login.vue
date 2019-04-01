@@ -129,7 +129,7 @@ import api from '../config/apis';
         {
           "id": 9,
           "menuCode": null,
-          "menuName": "运营商标签发送",
+          "menuName": "行业标签",
           "menuIcon": "0",
           "menuUrl": null,
           "parentId": "4",
@@ -145,7 +145,7 @@ import api from '../config/apis';
          {
           "id": 9,
           "menuCode": null,
-          "menuName": "标签数据发送",
+          "menuName": "通道标签",
           "menuIcon": "0",
           "menuUrl": null,
           "parentId": "4",
@@ -153,7 +153,7 @@ import api from '../config/apis';
           "isShow": 1,
           "resoure_url": "WorkPiece/index",
           "resoure_type": "url",
-          "permission": "user",
+          "permission": "gateway",
           "sysMenuVoChild": [
             
           ]

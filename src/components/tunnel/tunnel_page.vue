@@ -7,8 +7,6 @@
                 <el-radio v-model="radio" label="4">游戏</el-radio>
                 <el-radio v-model="radio" label="5">地产</el-radio>
         </div>
-     
-
         <el-table
         :data="tableData"
         style="width: 100%">
@@ -38,12 +36,35 @@
             </el-table-column>
                <el-table-column label="操作" fixed="right" min-width="180">
                 <template slot-scope="scope">
-                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">加入LBS</el-button>
+                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑标签</el-button>
                 </template>
             </el-table-column>
         </el-table>
         <el-pagination background layout="total,sizes,prev, pager, next,jumper" :current-page="pageInfo.pageNo" :page-size="pageInfo.size" :total="pageInfo.pageTotal" :page-sizes="[10, 20, 50]" @size-change="handleSizeChange" @current-change="handleCurrentChange">
         </el-pagination>
+
+        <el-dialog
+            title="标签"
+            :visible.sync="dialogVisible"
+            :before-close="handleClose">
+            <el-form ref="form" :model="form" label-width="100px">
+                <el-form-item label="">
+                   <el-checkbox-group v-model="checkList">
+                        <el-checkbox label="金融"></el-checkbox>
+                        <el-checkbox label="电商"></el-checkbox>
+                        <el-checkbox label="区块链"></el-checkbox>
+                        <el-checkbox label="游戏"></el-checkbox>
+                        <el-checkbox label="地产"></el-checkbox>
+                    </el-checkbox-group>
+                </el-form-item>
+                
+                <el-form-item class="edit-table-button">
+                    <el-button type="primary" @click="dialogVisible = false">确定</el-button>
+                    <el-button  @click="dialogVisible = false">取消</el-button>
+                </el-form-item>
+                </el-form>     
+            </el-dialog>
+        
     </div>
   </template>
     <style>
@@ -52,6 +73,25 @@
         }
         thead{
             background-color: #90b7ff;
+        }
+        .el-checkbox-group {
+            font-size: 0;
+            width: 500px;
+            /* display: block; */
+        }
+        .edit-table-button{
+            margin-top:20px;
+            margin-left:15%;
+        }
+        .el-dialog {
+            position: relative;
+            margin: 0 auto 50px;
+            background: #fff;
+            border-radius: 2px;
+            -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+            box-shadow: 0 1px 3px rgba(0,0,0,.3);
+            box-sizing: border-box;
+            width: 30%;
         }
     </style>
     
@@ -67,6 +107,9 @@
                 size: 10,
                 pageTotal: 100
             },
+            checkList: ['选中且禁用','复选框 A'],
+            form:{},
+            dialogVisible: false,
           radio: '1',
           tableData: [],
           cloumnData:{
@@ -3416,6 +3459,9 @@
                index++;
             }
             this.tableData = tableData_;
+          },
+          handleEdit(index, row){
+              this.dialogVisible = true;
           }
       }
     }
