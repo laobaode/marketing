@@ -20,6 +20,7 @@
         </el-form>
           <el-row class="mgb15">
              <button type="button" class="el-button el-button--primary"><!----><!----><span>批量发送</span></button>
+             <button type="button" class="el-button el-button--primary"><!----><!----><span>批量关联到呼叫系统</span></button>
         </el-row>
         <!-- 表格---start -->
         <el-table :data="tableData" border stripe style="width: 100%" @selection-change="handleSelectionChange">
@@ -34,7 +35,7 @@
         
             <el-table-column label="操作" fixed="right" min-width="180">
                 <template slot-scope="scope">
-                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">关联到呼叫系统</el-button>
                     <el-button size="mini" @click="openApiManage(scope.$index, scope.row)">发送短信</el-button>
                 </template>
             </el-table-column>
